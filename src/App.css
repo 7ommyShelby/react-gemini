@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  background-color: #131314;
+}
+
+.sidebar {
+  background-color: #1E1F20;
+  height: 100vh;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: all .4s ease-in-out;
+}
+
+.expanded {
+  width: 250px;
+}
+
+.collapsed {
+  width: 60px;
+  align-items: center;
+}
+
+.menu {
+  height: 40px;
+  width: 40px;
+  color: white;
+}
+
+.main-body {
+  color: white;
+}
+
+.gemini {
+  max-width: 900px;
+  justify-content: space-between;
+}
+
+.user {
+  color: linear-gradient(to right, #ff4655, #0f1923)
+}
+
+.pt-2 {
+  color: #444746;
+}
+
+.card {
+  height: 210px;
+  width: 210px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #212223;
+}
+
+.active {
+  background-color: #3B4456;
+}
+
+.card:hover {
+  background-color: #333537;
+}
+
+.card p {
+  font-size: 1.2rem;
+}
+
+.prompt {
+  border-radius: 30px;
+  background-color: #333537;
+  padding: 15px 25px;
+}
+
+.prompt input {
+  background: transparent;
+}
+
+.ic {
+  font-size: 1.3rem;
+}
+.hide{
+  display: none;
+}
+.block{
+  display: block;
+  
+}
+.options{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+}
+

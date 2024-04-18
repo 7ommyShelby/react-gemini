@@ -34,10 +34,12 @@ main {
 
 .main-body {
   color: white;
+  height: 100%;
 }
 
 .gemini {
   max-width: 900px;
+  min-width: 900px;
   justify-content: space-between;
 }
 
@@ -77,22 +79,33 @@ main {
 
 .prompt input {
   background: transparent;
+  outline: none;
 }
 
 .ic {
   font-size: 1.3rem;
 }
-.hide{
+
+.hide {
   display: none;
 }
-.block{
+
+.block {
   display: block;
-  
+
 }
-.options{
+
+.options {
   display: flex;
   align-items: center;
   gap: 10px;
+}
 
+.result::-webkit-scrollbar{
+  display: none;
+}
+
+.history::-webkit-scrollbar{
+    display: none;
 }
 

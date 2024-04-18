@@ -1,4 +1,6 @@
 import './App.css'
+import { store } from './comp/redux/store'
+import { Provider } from 'react-redux'
 
 import Home from './comp/Home'
 function App() {
@@ -6,7 +8,10 @@ function App() {
 
   return (
     <>
-      <Home />
+      <Provider store={store}>
+        <Home />
+      </Provider>
+
     </>
   )
 }

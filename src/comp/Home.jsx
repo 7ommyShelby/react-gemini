@@ -121,7 +121,7 @@ const Home = () => {
                     <div className="gemini flex flex-col h-full">
 
                         {
-                            !output ? (<>
+                            loading ? (<>
                                 <div className='text-5xl font-medium'>
                                     <span><h1 className='user'>Hello, User</h1></span>
                                     <h1 className='pt-2'>How can I help you today?</h1>
@@ -151,6 +151,7 @@ const Home = () => {
                                         <p>{input}</p>
                                     </div>
                                     <div className='flex gap-4'>
+                                    
                                         <span><SiGooglegemini className='text-blue-600 text-3xl' /></span>
                                         <p>
                                             {/* <TypeWriterEffect
@@ -159,7 +160,11 @@ const Home = () => {
                                                 text={output}
                                                 typeSpeed={20}
                                             /> */}
-                                            {output}
+
+                                            {
+                                                output !== null ? output : <Skeleton />
+                                            }
+
                                         </p>
                                     </div>
                                 </div>
@@ -172,7 +177,10 @@ const Home = () => {
                             <div className="flex gap-3 ic">
                                 <LuImagePlus />
                                 <IoMdMic />
-                                <AiOutlineSend onClick={query} />
+                                <AiOutlineSend className='cursor-pointer' onClick={()=>{
+                                    query()
+                                    dispatch(setloading(false))
+                                }} />
                             </div>
                         </div>
                     </div>

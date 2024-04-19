@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   input: null,
   loading: true,
-  output : null,
+  output : "",
   recent : [],
 }
 

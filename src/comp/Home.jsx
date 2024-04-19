@@ -16,6 +16,7 @@ import TypeWriterEffect from 'react-typewriter-effect';
 import runChat from './Gemini';
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
+import { marked } from 'marked';
 
 
 
@@ -37,17 +38,19 @@ const Home = () => {
         dispatch(setinput(inputref.current.value))
         dispatch(setloading(true))
 
-       let ans = await runChat(inputref.current.value)
-        
+        let ans = await runChat(inputref.current.value)
+        const html = marked.parse(ans);
+
         dispatch(setloading(false))
-        dispatch(setoutput(ans))
+        dispatch(setoutput(html))
         dispatch(setrecent(inputref.current.value))
 
+        
     }
 
     console.log("output", output);
     console.log("input", input);
-    
+
     return (
         <>
 
@@ -65,31 +68,31 @@ const Home = () => {
                         </div>
                     </div>
 
-                    <h1 className={`text-slate-400 text-lg ${sidebar? "block" : "hidden"}`}>Recent</h1>
+                    <h1 className={`text-slate-400 text-lg ${sidebar ? "block" : "hidden"}`}>Recent</h1>
 
                     <div className={`history flex flex-1 flex-col max-h-[40vh] overflow-scroll ${sidebar ? "block" : "hidden"}`}>
-                            {
-                                recents ? (<>
-                                    {
-                                        recents.map((e) => {
-                                            return (
-                                                <>
-                                                    <p className='flex gap-2 items-center text-slate-300'>
-                                                        <FaRegMessage className='text-xl text-white' />
-                                                        {e}
-                                                    </p>
-                                                </>
-                                            )
-                                        })
-                                    }
+                        {
+                            recents ? (<>
+                                {
+                                    recents.map((e) => {
+                                        return (
+                                            <>
+                                                <p className='flex gap-2 items-center text-slate-300'>
+                                                    <FaRegMessage className='text-xl text-white' />
+                                                    {e}
+                                                </p>
+                                            </>
+                                        )
+                                    })
+                                }
 
-                                </>) : (
-                                    <>
+                            </>) : (
+                                <>
 
-                                    </>
-                                )
-                            }
-                        </div>
+                                </>
+                            )
+                        }
+                    </div>
 
 
                     <div className='bottom text-white flex flex-col gap-6'>
@@ -151,9 +154,10 @@ const Home = () => {
                                         <p>{input}</p>
                                     </div>
                                     <div className='flex gap-4'>
-                                    
+
                                         <span><SiGooglegemini className='text-blue-600 text-3xl' /></span>
-                                        <p>
+                                        <div>
+
                                             {/* <TypeWriterEffect
                                                 startDelay={10}
                                                 cursorColor="white"
@@ -161,11 +165,11 @@ const Home = () => {
                                                 typeSpeed={20}
                                             /> */}
 
-                                            {
-                                                output !== null ? output : <Skeleton />
-                                            }
+                                        </div>
+                                        {
+                                            output === "" ? <Skeleton baseColor='#80a3cd' width={"800px"} count={4} style={{ display: "block" }} /> : <div className='px-2 list-disc' dangerouslySetInnerHTML={ {__html : output} } />
+                                        }
 
-                                        </p>
                                     </div>
                                 </div>
                             </>)
@@ -177,7 +181,7 @@ const Home = () => {
                             <div className="flex gap-3 ic">
                                 <LuImagePlus />
                                 <IoMdMic />
-                                <AiOutlineSend className='cursor-pointer' onClick={()=>{
+                                <AiOutlineSend className='cursor-pointer' onClick={() => {
                                     query()
                                     dispatch(setloading(false))
                                 }} />

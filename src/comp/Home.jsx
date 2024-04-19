@@ -78,8 +78,8 @@ const Home = () => {
                                         return (
                                             <>
                                                 <p className='flex gap-2 items-center text-slate-300'>
-                                                    <FaRegMessage className='text-xl text-white' />
-                                                    {e}
+                                                    <FaRegMessage className='text-sm text-white' />
+                                                    <p className='w-48 text-ellipsis overflow-hidden whitespace-nowrap'>{e}</p>
                                                 </p>
                                             </>
                                         )
@@ -167,7 +167,7 @@ const Home = () => {
 
                                         </div>
                                         {
-                                            output === "" ? <Skeleton baseColor='#80a3cd' width={"800px"} count={4} style={{ display: "block" }} /> : <div className='px-2 list-disc' dangerouslySetInnerHTML={ {__html : output} } />
+                                            output === "" ? <Skeleton width={"800px"} count={3.5} style={{ display: "block" }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={ {__html : output} } />
                                         }
 
                                     </div>
@@ -184,11 +184,15 @@ const Home = () => {
                                 <AiOutlineSend className='cursor-pointer' onClick={() => {
                                     query()
                                     dispatch(setloading(false))
+                                    dispatch(setoutput(""))
                                 }} />
                             </div>
                         </div>
                     </div>
                     <span className='text-xs'>Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps</span>
+
+
+                    
                 </div>
             </main>
         </>

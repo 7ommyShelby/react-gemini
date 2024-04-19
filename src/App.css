@@ -109,3 +109,20 @@ main {
     display: none;
 }
 
+
+.res ul{
+  list-style: disc;
+  list-style-position: inside;
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+
+}
+
+.res strong{
+  font-size: 1.2rem;
+}
+.res p strong{
+  text-decoration: underline;
+}
+

@@ -29,27 +29,24 @@ const Home = () => {
     const loading = useSelector((state) => (state.loading))
     const recents = useSelector((state) => (state.recent))
 
-    const inputref = useRef("")
 
     const [sidebar, setsidebar] = useState(false);
 
     const query = async () => {
 
-        dispatch(setinput(inputref.current.value))
         dispatch(setloading(true))
 
-        let ans = await runChat(inputref.current.value)
+        let ans = await runChat(input)
         const html = marked.parse(ans);
 
         dispatch(setloading(false))
         dispatch(setoutput(html))
-        dispatch(setrecent(inputref.current.value))
+        dispatch(setrecent(input))
 
         
     }
 
-    console.log("output", output);
-    console.log("input", input);
+    console.log(output);
 
     return (
         <>
@@ -105,7 +102,9 @@ const Home = () => {
                             <p className={sidebar ? "block" : "hide"}>History</p>
                         </div>
                         <div className='options'>
-                            <IoSettings className='text-2xl' />
+                            <IoSettings onClick={()=>{
+
+                            }} className='text-2xl' />
                             <p className={sidebar ? "block" : "hide"}>Settings</p>
                         </div>
                     </div>
@@ -125,12 +124,12 @@ const Home = () => {
 
                         {
                             loading ? (<>
-                                <div className='text-5xl font-medium'>
-                                    <span><h1 className='user'>Hello, User</h1></span>
-                                    <h1 className='pt-2'>How can I help you today?</h1>
+                                <div className='greet text-5xl font-medium'>
+                                    <span><h1 className='user text-wrap'>Hello, User</h1></span>
+                                    <h1 className='pt-2 text-wrap'>How can I help you today?</h1>
                                 </div>
 
-                                <div className='flex gap-4'>
+                                <div className='ideas flex gap-4'>
                                     <div className='card active relative'>
                                         <p>Ideas to surprise a friend on their birthday</p>
                                         <FaCompass className='text-2xl absolute right-4 bottom-4 ' />
@@ -167,7 +166,7 @@ const Home = () => {
 
                                         </div>
                                         {
-                                            output === "" ? <Skeleton width={"800px"} count={3.5} style={{ display: "block" }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={ {__html : output} } />
+                                            output === "" ? <Skeleton width={"800px"} baseColor='blue' count={3.5} style={{ display: "block" }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={ {__html : output} } />
                                         }
 
                                     </div>
@@ -176,12 +175,13 @@ const Home = () => {
                         }
 
                         <div className="prompt flex items-center w-full">
-                            <input ref={inputref}
+                            <input value={input} onChange={(e)=>{
+                                dispatch(setinput(e.target.value))
+                            }}
                                 className='w-full' type="text" placeholder='Enter a prompt here' />
                             <div className="flex gap-3 ic">
-                                <LuImagePlus />
                                 <IoMdMic />
-                                <AiOutlineSend className='cursor-pointer' onClick={() => {
+                                <AiOutlineSend className='cursor-pointer ' onClick={() => {
                                     query()
                                     dispatch(setloading(false))
                                     dispatch(setoutput(""))

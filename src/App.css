@@ -39,12 +39,13 @@ main {
 
 .gemini {
   max-width: 900px;
-  min-width: 900px;
   justify-content: space-between;
 }
 
 .user {
-  color: linear-gradient(to right, #ff4655, #0f1923)
+  background: -webkit-linear-gradient(#d8488d, #6048d8, #34a1c9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .pt-2 {
@@ -101,28 +102,84 @@ main {
   gap: 10px;
 }
 
-.result::-webkit-scrollbar{
+.result::-webkit-scrollbar {
   display: none;
 }
 
-.history::-webkit-scrollbar{
-    display: none;
+.history::-webkit-scrollbar {
+  display: none;
 }
 
 
-.res ul{
+.res ul {
   list-style: disc;
   list-style-position: inside;
-   display: flex;
-   flex-direction: column;
-   gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
 }
 
-.res strong{
+.res strong {
   font-size: 1.2rem;
 }
-.res p strong{
+
+.res p strong {
   text-decoration: underline;
 }
 
+
+
+@media screen and (max-width : 1000px) {
+    .main-body{
+      width: 600px;
+    }
+    
+    .gemini{
+      max-width: 600px;
+    }
+
+    .greet, .ideas, .prompt{
+      width: 100%;
+    }
+
+    .ideas{
+      overflow-x: scroll;
+    } 
+    .ideas::-webkit-scrollbar{
+      display: none;
+    }
+    .prompt{
+      justify-content: space-between !important;
+    }
+}
+
+@media screen and (max-width : 660px) {
+  .main-body{
+   width: 300px;
+  }
+
+  .gemini{
+    width: 100%;
+    gap: 1rem;
+  }
+    .card{
+      min-width: 210px;
+    }
+    .ideas{
+      overflow-x: scroll;
+    } 
+    .ideas::-webkit-scrollbar{
+      display: none;
+    }
+
+    .greet h1{
+      text-wrap: wrap;
+    }
+}
+
+@media screen and (max-width : 450px) {
+    .sidebar{
+      display: none;
+    }
+}

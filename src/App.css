@@ -131,55 +131,71 @@ main {
 
 
 @media screen and (max-width : 1000px) {
-    .main-body{
-      width: 600px;
-    }
-    
-    .gemini{
-      max-width: 600px;
-    }
+  .main-body {
+    width: 600px;
+  }
 
-    .greet, .ideas, .prompt{
-      width: 100%;
-    }
+  .gemini {
+    max-width: 600px;
+  }
 
-    .ideas{
-      overflow-x: scroll;
-    } 
-    .ideas::-webkit-scrollbar{
-      display: none;
-    }
-    .prompt{
-      justify-content: space-between !important;
-    }
+  .greet,
+  .ideas,
+  .prompt {
+    width: 100%;
+  }
+
+  .ideas {
+    overflow-x: scroll;
+  }
+
+  .ideas::-webkit-scrollbar {
+    display: none;
+  }
+
+  .prompt {
+    justify-content: space-between !important;
+  }
 }
 
 @media screen and (max-width : 660px) {
-  .main-body{
-   width: 300px;
+  .main-body {
+    width: 300px;
   }
 
-  .gemini{
+  .gemini {
     width: 100%;
     gap: 1rem;
   }
-    .card{
-      min-width: 210px;
-    }
-    .ideas{
-      overflow-x: scroll;
-    } 
-    .ideas::-webkit-scrollbar{
-      display: none;
-    }
 
-    .greet h1{
-      text-wrap: wrap;
-    }
+  .card {
+    min-width: 210px;
+  }
+
+  .ideas {
+    overflow-x: scroll;
+  }
+
+  .ideas::-webkit-scrollbar {
+    display: none;
+  }
+
+  .greet h1 {
+    text-wrap: wrap;
+  }
 }
 
 @media screen and (max-width : 450px) {
-    .sidebar{
-      display: none;
-    }
+  .sidebar {
+    display: none;
+  }
+  .main-body{
+    max-height: fit-content;
+  }
+  main{
+    overflow-x: scroll;
+  }
+  main::-webkit-scrollbar{
+    display: none;
+  }
 }

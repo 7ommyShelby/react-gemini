@@ -24,6 +24,8 @@ const Home = () => {
 
     const dispatch = useDispatch();
 
+    const inputref = useRef("")
+
     const input = useSelector((state) => (state.input))
     const output = useSelector((state) => (state.output))
     const loading = useSelector((state) => (state.loading))
@@ -33,7 +35,7 @@ const Home = () => {
     const [sidebar, setsidebar] = useState(false);
 
     const query = async () => {
-
+        
         dispatch(setloading(true))
 
         let ans = await runChat(input)
@@ -51,7 +53,7 @@ const Home = () => {
     return (
         <>
 
-            <main className='flex h-screen w-screen'>
+            <main className='flex h-screen w-screen '>
 
                 <div className={` sidebar justify-between ${sidebar ? "expanded" : "collapsed"}`}>
 
@@ -59,7 +61,7 @@ const Home = () => {
 
                         <div onClick={() => { setsidebar(!sidebar) }} className='flex justify-center items-center  hover:rounded-full h-10 w-10  hover:bg-slate-700'><GiHamburgerMenu className='text-white text-lg' /></div>
 
-                        <div className='options flex-1 bg-slate-950 rounded-full px-2 py-2 gap-3'>
+                        <div onClick={()=>dispatch(setloading(true))} className='options flex-1 bg-slate-950 rounded-full px-2 py-2 gap-3'>
                             <MdAdd className='text-slate-600 text-xl hover:bg-slate-700' />
                             <p className={`text-white ${sidebar ? "block" : "hide"}`}>New Chat</p>
                         </div>
@@ -150,7 +152,7 @@ const Home = () => {
                             </>) : (<>
                                 <div className='result flex flex-col gap-8 overflow-scroll h-[70vh]'>
                                     <div>
-                                        <p>{input}</p>
+                                        <p>{inputref.current.value}</p>
                                     </div>
                                     <div className='flex gap-4'>
 
@@ -175,7 +177,7 @@ const Home = () => {
                         }
 
                         <div className="prompt flex items-center w-full">
-                            <input value={input} onChange={(e)=>{
+                            <input  value={input} ref={inputref} onChange={(e)=>{
                                 dispatch(setinput(e.target.value))
                             }}
                                 className='w-full' type="text" placeholder='Enter a prompt here' />
@@ -185,6 +187,7 @@ const Home = () => {
                                     query()
                                     dispatch(setloading(false))
                                     dispatch(setoutput(""))
+                                    dispatch(setinput(""))
                                 }} />
                             </div>
                         </div>

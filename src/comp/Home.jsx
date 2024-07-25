@@ -43,12 +43,13 @@ const Home = () => {
 
         dispatch(setloading(false))
         dispatch(setoutput(html))
+        // dispatch(setoutput(""))
         dispatch(setrecent(input))
 
 
     }
 
-    console.log(output);
+    // console.log(output);
 
     return (
         <>
@@ -150,26 +151,20 @@ const Home = () => {
                                     </div>
                                 </div>
                             </>) : (<>
-                                <div className='result flex flex-col gap-8 overflow-scroll h-[70vh]'>
+                                <div className='result w-full flex flex-col gap-8 overflow-scroll h-[70vh]'>
+
                                     <div>
-                                        <p>{inputref.current.value}</p>
+                                        <p>{recents[0]}</p>
                                     </div>
+
                                     <div className='flex gap-4'>
 
                                         <span><SiGooglegemini className='text-blue-600 text-3xl' /></span>
-                                        <div>
-
-                                            {/* <TypeWriterEffect
-                                                startDelay={10}
-                                                cursorColor="white"
-                                                text={output}
-                                                typeSpeed={20}
-                                            /> */}
-
+                                        <div className='w-full'>
+                                            {
+                                                output === "" ? <Skeleton baseColor='#AAB7B8' count={3.5} style={{ display: "block", width: '100%' }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={{ __html: output }} />
+                                            }
                                         </div>
-                                        {
-                                            output === "" ? <Skeleton width={"800px"} baseColor='blue' count={3.5} style={{ display: "block" }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={{ __html: output }} />
-                                        }
 
                                     </div>
                                 </div>

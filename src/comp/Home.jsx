@@ -122,7 +122,7 @@ const Home = () => {
                         <img src="" alt="" />
                     </header>
 
-                    <div className="gemini flex flex-col h-full min-w-full">
+                    <div className="gemini flex items-center flex-col h-full min-w-[75%]">
 
                         {
                             loading ? (<>

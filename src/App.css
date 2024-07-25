@@ -129,6 +129,9 @@ main {
 .res p{
   color: #DCDCDC;
 }
+.res li{
+  color: #B2BABB;
+}
 
 .res strong {
   font-size: 1.2rem;

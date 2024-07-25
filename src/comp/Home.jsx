@@ -175,10 +175,10 @@ const Home = () => {
                             <input value={input} ref={inputref} onChange={(e) => {
                                 dispatch(setinput(e.target.value))
                             }}
-                                className='w-full' type="text" placeholder='Enter a prompt here....' />
+                                className='w-full text-slate-300' type="text" placeholder='Enter a prompt here....' />
                             <div className="flex gap-3 ic">
                                 {/* <IoMdMic /> */}
-                                <AiOutlineSend className='cursor-pointer ' onClick={() => {
+                                <AiOutlineSend className='cursor-pointer text-slate-100' onClick={() => {
                                     query()
                                     dispatch(setloading(false))
                                     dispatch(setoutput(""))

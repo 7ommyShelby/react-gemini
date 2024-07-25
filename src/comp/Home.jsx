@@ -19,7 +19,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import { marked } from 'marked';
 
 
-
 const Home = () => {
 
     const dispatch = useDispatch();
@@ -46,10 +45,7 @@ const Home = () => {
         // dispatch(setoutput(""))
         dispatch(setrecent(input))
 
-
     }
-
-    // console.log(output);
 
     return (
         <>
@@ -132,7 +128,7 @@ const Home = () => {
                                     <h1 className='pt-2 text-wrap'>How can I help you today?</h1>
                                 </div>
 
-                                <div className='ideas flex gap-4'>
+                                <div className='ideas text-slate-300 flex gap-4'>
                                     <div className='card active relative'>
                                         <p>Ideas to surprise a friend on their birthday</p>
                                         <FaCompass className='text-2xl absolute right-4 bottom-4 ' />
@@ -162,7 +158,7 @@ const Home = () => {
                                         <span><SiGooglegemini className='text-blue-600 text-3xl' /></span>
                                         <div className='w-full'>
                                             {
-                                                output === "" ? <Skeleton baseColor='#717D7E' count={3.5} style={{ display: "block", width: '100%' }} /> : <div className='res flex flex-col py-4  gap-4 px-2 '  dangerouslySetInnerHTML={{ __html: output }} />
+                                                output === "" ? <Skeleton baseColor='#717D7E' count={3.5} style={{ display: "block", width: '100%' }} /> : <div className='res text-slate-400 flex flex-col py-4  gap-4 px-2 '  dangerouslySetInnerHTML={{ __html: output }} />
                                             }
                                         </div>
 

@@ -22,7 +22,6 @@ export const counterSlice = createSlice({
       state.output = action.payload
     },
     setrecent: (state, action) => {
-      console.log(action.payload);
       state.recent.push(action.payload)
     }
   },

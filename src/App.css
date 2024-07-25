@@ -6,6 +6,7 @@
 
 main {
   background-color: #131314;
+  /* background-color: #37474F; */
 }
 
 .sidebar {
@@ -33,7 +34,7 @@ main {
 }
 
 .main-body {
-  color: white;
+  /* color: white; */
   height: 100%;
 }
 
@@ -110,22 +111,36 @@ main {
   display: none;
 }
 
-
 .res ul {
   list-style: disc;
   list-style-position: inside;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  color: #B2BABB;
 
+}
+
+.res h1, .res h2, .res h3, .res h4 , .res h5, .res h6 {
+  font-size: xx-large;
+  color: #B2BABB;
+}
+
+.res p{
+  color: #DCDCDC;
 }
 
 .res strong {
   font-size: 1.2rem;
 }
 
+.res li strong {
+  color: #D5DBDB;
+}
+
 .res p strong {
   text-decoration: underline;
+  color: #D0D3D4;
 }
 
 

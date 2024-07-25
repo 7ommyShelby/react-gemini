@@ -119,7 +119,7 @@ const Home = () => {
                 <div className="main-body flex flex-col flex-1 py-6 px-5 items-center gap-8 ">
 
                     <header className='w-full flex justify-between px-6'>
-                        <h1 className='text-2xl flex items-center'>All-Star AI<MdArrowDropDown /></h1>
+                        <h1 className='text-2xl flex items-center text-stone-50'>All-Star AI<MdArrowDropDown /></h1>
                         <img src="" alt="" />
                     </header>
 
@@ -154,7 +154,7 @@ const Home = () => {
                                 <div className='result w-full flex flex-col gap-8 overflow-scroll h-[70vh]'>
 
                                     <div>
-                                        <p>{recents[0]}</p>
+                                        <p className='text-slate-300'>{recents[recents.length-1]}</p>
                                     </div>
 
                                     <div className='flex gap-4'>
@@ -162,7 +162,7 @@ const Home = () => {
                                         <span><SiGooglegemini className='text-blue-600 text-3xl' /></span>
                                         <div className='w-full'>
                                             {
-                                                output === "" ? <Skeleton baseColor='#AAB7B8' count={3.5} style={{ display: "block", width: '100%' }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={{ __html: output }} />
+                                                output === "" ? <Skeleton baseColor='#717D7E' count={3.5} style={{ display: "block", width: '100%' }} /> : <div className='res flex flex-col py-4  gap-4 px-2 '  dangerouslySetInnerHTML={{ __html: output }} />
                                             }
                                         </div>
 
@@ -171,13 +171,13 @@ const Home = () => {
                             </>)
                         }
 
-                        <div className="prompt flex items-center w-full">
+                        <div className="prompt flex items-center gap-2 w-full">
                             <input value={input} ref={inputref} onChange={(e) => {
                                 dispatch(setinput(e.target.value))
                             }}
-                                className='w-full' type="text" placeholder='Enter a prompt here' />
+                                className='w-full' type="text" placeholder='Enter a prompt here....' />
                             <div className="flex gap-3 ic">
-                                <IoMdMic />
+                                {/* <IoMdMic /> */}
                                 <AiOutlineSend className='cursor-pointer ' onClick={() => {
                                     query()
                                     dispatch(setloading(false))
@@ -187,8 +187,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <span className='text-xs'>Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps</span>
-
+                    <span className='text-xs text-gray-500'>Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps</span>
                 </div>
             </main>
         </>

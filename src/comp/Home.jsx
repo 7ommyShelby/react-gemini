@@ -35,7 +35,7 @@ const Home = () => {
     const [sidebar, setsidebar] = useState(false);
 
     const query = async () => {
-        
+
         dispatch(setloading(true))
 
         let ans = await runChat(input)
@@ -45,7 +45,7 @@ const Home = () => {
         dispatch(setoutput(html))
         dispatch(setrecent(input))
 
-        
+
     }
 
     console.log(output);
@@ -61,7 +61,7 @@ const Home = () => {
 
                         <div onClick={() => { setsidebar(!sidebar) }} className='flex justify-center items-center  hover:rounded-full h-10 w-10  hover:bg-slate-700'><GiHamburgerMenu className='text-white text-lg' /></div>
 
-                        <div onClick={()=>dispatch(setloading(true))} className='options flex-1 bg-slate-950 rounded-full px-2 py-2 gap-3'>
+                        <div onClick={() => dispatch(setloading(true))} className='options flex-1 bg-slate-950 rounded-full px-2 py-2 gap-3'>
                             <MdAdd className='text-slate-600 text-xl hover:bg-slate-700' />
                             <p className={`text-white ${sidebar ? "block" : "hide"}`}>New Chat</p>
                         </div>
@@ -104,7 +104,7 @@ const Home = () => {
                             <p className={sidebar ? "block" : "hide"}>History</p>
                         </div>
                         <div className='options'>
-                            <IoSettings onClick={()=>{
+                            <IoSettings onClick={() => {
 
                             }} className='text-2xl' />
                             <p className={sidebar ? "block" : "hide"}>Settings</p>
@@ -118,7 +118,7 @@ const Home = () => {
                 <div className="main-body flex flex-col flex-1 py-6 px-5 items-center gap-8 ">
 
                     <header className='w-full flex justify-between px-6'>
-                        <h1 className='text-2xl flex items-center'>Gemini<MdArrowDropDown /></h1>
+                        <h1 className='text-2xl flex items-center'>All-Star AI<MdArrowDropDown /></h1>
                         <img src="" alt="" />
                     </header>
 
@@ -168,7 +168,7 @@ const Home = () => {
 
                                         </div>
                                         {
-                                            output === "" ? <Skeleton width={"800px"} baseColor='blue' count={3.5} style={{ display: "block" }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={ {__html : output} } />
+                                            output === "" ? <Skeleton width={"800px"} baseColor='blue' count={3.5} style={{ display: "block" }} /> : <div className='res flex flex-col  gap-4 px-2' dangerouslySetInnerHTML={{ __html: output }} />
                                         }
 
                                     </div>
@@ -177,7 +177,7 @@ const Home = () => {
                         }
 
                         <div className="prompt flex items-center w-full">
-                            <input  value={input} ref={inputref} onChange={(e)=>{
+                            <input value={input} ref={inputref} onChange={(e) => {
                                 dispatch(setinput(e.target.value))
                             }}
                                 className='w-full' type="text" placeholder='Enter a prompt here' />
@@ -193,8 +193,6 @@ const Home = () => {
                         </div>
                     </div>
                     <span className='text-xs'>Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps</span>
-
-
                     
                 </div>
             </main>

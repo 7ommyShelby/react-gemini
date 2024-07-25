@@ -8,20 +8,34 @@ import {
 } from "@google/generative-ai"
 
 
-const MODEL_NAME = "gemini-1.0-pro";
-const API_KEY = import.meta.env.VITE_APP_TOKEN;
+// const MODEL_NAME = "gemini-1.0-pro";
 
 
 async function runChat(prompt) {
-
+    
+    const API_KEY = import.meta.env.VITE_APP_TOKEN;
     const genAI = new GoogleGenerativeAI(API_KEY);
-    const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+
+    const model = genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+    });
+
+
+    // const model = genAI.getGenerativeModel({ model: MODEL_NAME });
+
+    // const generationConfig = {
+    //     temperature: 0.9,
+    //     topK: 1,
+    //     topP: 1,
+    //     maxOutputTokens: 2048,
+    // };
 
     const generationConfig = {
-        temperature: 0.9,
-        topK: 1,
-        topP: 1,
-        maxOutputTokens: 2048,
+        temperature: null,
+        topP: 0.95,
+        topK: 64,
+        maxOutputTokens: 8192,
+        responseMimeType: "text/plain",
     };
 
     const safetySettings = [
@@ -43,14 +57,22 @@ async function runChat(prompt) {
         },
     ];
 
-    const chat = model.startChat({
+    // const chat = model.startChat({
+    //     generationConfig,
+    //     safetySettings,
+    //     history: [
+    //     ],
+    // });
+
+    const chatSession = model.startChat({
         generationConfig,
         safetySettings,
+        
         history: [
         ],
-    });
+    })
 
-    const result = await chat.sendMessage(prompt);
+    const result = await chatSession.sendMessage(prompt);
     const response = result.response;
     // console.log(response.text());
     return response.text()

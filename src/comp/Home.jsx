@@ -122,7 +122,7 @@ const Home = () => {
                         <img src="" alt="" />
                     </header>
 
-                    <div className="gemini flex flex-col h-full">
+                    <div className="gemini flex flex-col h-full min-w-full">
 
                         {
                             loading ? (<>
@@ -193,7 +193,7 @@ const Home = () => {
                         </div>
                     </div>
                     <span className='text-xs'>Gemini may display inaccurate info, including about people, so double-check its responses. Your privacy and Gemini Apps</span>
-                    
+
                 </div>
             </main>
         </>
